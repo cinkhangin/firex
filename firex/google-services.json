@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "457825259340",
+    "project_id": "firex-library",
+    "storage_bucket": "firex-library.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457825259340:android:4d01f2a30b5603104089e9",
+        "android_client_info": {
+          "package_name": "com.naulian.firex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "457825259340-ndi2rjqiu6502igsm8ft4li4moho167r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuvXoYt2tqIQDV5787zl3M_nqOvsNB54k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "457825259340-ndi2rjqiu6502igsm8ft4li4moho167r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
