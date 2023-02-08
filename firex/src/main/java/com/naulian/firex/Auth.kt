@@ -16,6 +16,7 @@ fun continueIfLogin(action: (uid: String) -> Unit) {
 
 fun reloadAuth() = firebaseUser?.reload()
 fun signOut() = firebaseAuth.signOut()
+
 fun signUpWithEmailAndPassword(
     email: String, password: String,
     onComplete: (result: Result<String>) -> Unit
