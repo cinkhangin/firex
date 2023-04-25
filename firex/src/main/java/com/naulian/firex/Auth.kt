@@ -33,3 +33,7 @@ fun signInWithEmailAndPassword(
     .addOnFailureListener { onComplete(failure(it)) }
     .addOnSuccessListener { onComplete(success(nonNullUid)) }
 
+fun signUpWithGoogle() {
+
+}
+
