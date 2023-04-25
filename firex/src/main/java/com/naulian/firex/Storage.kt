@@ -9,9 +9,11 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import com.naulian.anhance.fileExtension
 
+fun storagePath(name : String) = Firebase.storage.getReference(name)
+
 object Storage {
 
-    private val root get() = Firebase.storage.getReference("users")
+    private val root get() = storagePath("users")
     private fun usersRef(uid: String) = root.child(uid)
 
     fun uploadProfilePic(
@@ -26,14 +28,18 @@ object Storage {
         Firebase.storage.getReferenceFromUrl(url).delete()
     }
 
+    fun createName(context: Context, prefix: String, uri: Uri): String {
+        val extension = uri.fileExtension(context)
+        return "$prefix.$extension"
+    }
 
-    private fun createPath(context: Context, uid: String, uri: Uri): StorageReference {
+    fun createPath(context: Context, uid: String, uri: Uri): StorageReference {
         val extension = uri.fileExtension(context)
         val filename = "$uid.$extension"
         return usersRef(uid).child(filename)
     }
 
-    private fun uploadImage(
+    fun uploadImage(
         storageRef: StorageReference, imageUri: Uri,
         onComplete: (Result<String>) -> Unit
     ) {
