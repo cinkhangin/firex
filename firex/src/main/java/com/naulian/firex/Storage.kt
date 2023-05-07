@@ -33,12 +33,14 @@ object Storage {
         return "$prefix.$extension"
     }
 
+    @Suppress("MemberVisibilityCanBePrivate")
     fun createPath(context: Context, uid: String, uri: Uri): StorageReference {
         val extension = uri.fileExtension(context)
         val filename = "$uid.$extension"
         return usersRef(uid).child(filename)
     }
 
+    @Suppress("MemberVisibilityCanBePrivate")
     fun uploadImage(
         storageRef: StorageReference, imageUri: Uri,
         onComplete: (Result<String>) -> Unit

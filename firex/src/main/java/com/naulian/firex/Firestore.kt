@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.naulian.firex
 
 import android.util.Log
@@ -9,7 +11,7 @@ import com.naulian.anhance.formatWith
 val firebaseStore get() = Firebase.firestore
 fun storeCollection(path: String) = Firebase.firestore.collection(path)
 
-val Timestamp.millis get() = seconds * 1000
+val Timestamp.millis get() = seconds * 1000L
 val Timestamp.dateString get() = toDate().toString()
 
 fun Timestamp.formatWith(pattern: String) = millis.formatWith(pattern)
