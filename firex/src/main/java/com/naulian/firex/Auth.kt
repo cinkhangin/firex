@@ -33,6 +33,12 @@ fun signInWithEmailAndPassword(
     .addOnFailureListener { onComplete(failure(it)) }
     .addOnSuccessListener { onComplete(success(nonNullUid)) }
 
+fun signInAnonymously(
+    onComplete: (result: Result<String>) -> Unit
+) = firebaseAuth.signInAnonymously()
+    .addOnFailureListener { onComplete(failure(it)) }
+    .addOnSuccessListener { onComplete(success(nonNullUid)) }
+
 fun signUpWithGoogle() {
 
 }
