@@ -1,11 +1,8 @@
+@file:Suppress("unused")
+
 package com.naulian.firex
 
 object Sync : FireSync() {
-    override fun onSync(pathId: String) {
-
-    }
-
-    override fun onDetach() {
-
-    }
+    override fun onSync(pathId: String) {}
+    override fun onDetach() {}
 }

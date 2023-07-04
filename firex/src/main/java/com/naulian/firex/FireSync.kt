@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.naulian.firex
 
 import com.google.firebase.firestore.DocumentSnapshot
@@ -7,7 +9,7 @@ abstract class FireSync {
     protected var synced = false
     protected var detached = true
 
-    fun sync(pathId: String) {
+    fun sync(pathId: String = "") {
         if (synced) return
 
         synced = true

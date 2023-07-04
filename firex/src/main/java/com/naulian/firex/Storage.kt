@@ -9,7 +9,7 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import com.naulian.anhance.fileExtension
 
-fun storagePath(name : String) = Firebase.storage.getReference(name)
+fun storagePath(name: String) = Firebase.storage.getReference(name)
 
 object Storage {
 
@@ -20,7 +20,7 @@ object Storage {
         context: Context, uid: String, uri: Uri,
         onComplete: (Result<String>) -> Unit
     ) {
-        val ref = createPath(context, uid, uri)
+        val ref = usersRef(uid).createPath(context, "profile", uri)
         uploadImage(ref, uri, onComplete)
     }
 
@@ -34,26 +34,40 @@ object Storage {
     }
 
     @Suppress("MemberVisibilityCanBePrivate")
-    fun createPath(context: Context, uid: String, uri: Uri): StorageReference {
+    fun StorageReference.createPath(
+        context: Context, name: String, uri: Uri
+    ): StorageReference {
         val extension = uri.fileExtension(context)
-        val filename = "$uid.$extension"
-        return usersRef(uid).child(filename)
+        val filename = "$name.$extension"
+        return child(filename)
     }
 
     @Suppress("MemberVisibilityCanBePrivate")
     fun uploadImage(
         storageRef: StorageReference, imageUri: Uri,
         onComplete: (Result<String>) -> Unit
-    ) {
-        storageRef.putFile(imageUri).addOnSuccessListener { getDownloadUrl(storageRef, onComplete) }
-            .addOnFailureListener { onComplete(Result.failure(it)) }
-    }
+    ) = storageRef.putFile(imageUri).addOnSuccessListener {
+        getDownloadUrl(storageRef, onComplete)
+    }.addOnFailureListener { onComplete(Result.failure(it)) }
+
+    fun StorageReference.uploadImage(
+        imageUri: Uri, onComplete: (Result<String>) -> Unit
+    ) = putFile(imageUri).addOnSuccessListener {
+        getDownloadUrl(onComplete)
+    }.addOnFailureListener { onComplete(Result.failure(it)) }
+
 
     private fun getDownloadUrl(
         storageRef: StorageReference,
         onComplete: (Result<String>) -> Unit
-    ) {
-        storageRef.downloadUrl.addOnSuccessListener { onComplete(Result.success(it.toString())) }
-            .addOnFailureListener { onComplete(Result.failure(it)) }
-    }
+    ) = storageRef.downloadUrl.addOnSuccessListener {
+        onComplete(Result.success(it.toString()))
+    }.addOnFailureListener { onComplete(Result.failure(it)) }
+
+    private fun StorageReference.getDownloadUrl(
+        onComplete: (Result<String>) -> Unit
+    ) = downloadUrl.addOnSuccessListener {
+        onComplete(Result.success(it.toString()))
+    }.addOnFailureListener { onComplete(Result.failure(it)) }
+
 }
