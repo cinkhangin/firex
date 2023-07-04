@@ -50,24 +50,10 @@ object Storage {
         getDownloadUrl(storageRef, onComplete)
     }.addOnFailureListener { onComplete(Result.failure(it)) }
 
-    fun StorageReference.uploadImage(
-        imageUri: Uri, onComplete: (Result<String>) -> Unit
-    ) = putFile(imageUri).addOnSuccessListener {
-        getDownloadUrl(onComplete)
-    }.addOnFailureListener { onComplete(Result.failure(it)) }
-
-
     private fun getDownloadUrl(
         storageRef: StorageReference,
         onComplete: (Result<String>) -> Unit
     ) = storageRef.downloadUrl.addOnSuccessListener {
         onComplete(Result.success(it.toString()))
     }.addOnFailureListener { onComplete(Result.failure(it)) }
-
-    private fun StorageReference.getDownloadUrl(
-        onComplete: (Result<String>) -> Unit
-    ) = downloadUrl.addOnSuccessListener {
-        onComplete(Result.success(it.toString()))
-    }.addOnFailureListener { onComplete(Result.failure(it)) }
-
 }
