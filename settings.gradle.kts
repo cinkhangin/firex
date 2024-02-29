@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -11,10 +13,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
+        maven { url = uri("https://jitpack.io") }
     }
 }
 
 rootProject.name = "Firex"
-include ':app'
-include ':firex'
+include(":app")
+include(":firex")
+
