@@ -14,13 +14,6 @@ import com.naulian.anhance.formatWith
 val firebaseStore get() = Firebase.firestore
 fun storeCollection(path: String) = Firebase.firestore.collection(path)
 
-//non_null
-val Timestamp.millis get() = seconds * 1000L
-val Timestamp.dateString get() = toDate().toString()
-
-fun Timestamp.formatWith(pattern: String) = millis.formatWith(pattern)
-fun Timestamp.formattedDate() = formatWith("dd/MM/yy")
-
 //nullable
 val Timestamp?.millis get() = (this?.seconds ?: 0L) * 1000L
 val Timestamp?.dateString get() = this?.toDate().toString()
