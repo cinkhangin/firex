@@ -57,11 +57,10 @@ afterEvaluate {
     publishing {
         publications {
             create<MavenPublication>("release") {
-                from(components["release"])
-
-                groupId = "com.github.cinkhangin"
+                groupId = "com.naulian"
                 artifactId = "firex"
                 version = "1.2.2"
+                from(components["release"])
             }
         }
     }
