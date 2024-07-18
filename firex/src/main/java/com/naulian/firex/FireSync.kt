@@ -6,14 +6,35 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.QuerySnapshot
 
 abstract class FireSync {
-    protected var synced = false
-    protected var detached = true
+    private var synced = false
+    private var detached = true
+
+    private var previousPathId = ""
+
+    // use this when you only want to run sync when the path id changes
+    fun smartSync(pathId: String) {
+        if (pathId == previousPathId) return
+        forceSync(pathId)
+    }
+
+    // use this when you want to run sync no matter what the path id is
+    fun forceSync(pathId: String) {
+        if (synced) detach()
+        sync(pathId)
+    }
+
+    // use this when you want to re-sync the current path
+    fun refresh(){
+        if (synced) detach()
+        sync(previousPathId)
+    }
 
     fun sync(pathId: String = "") {
         if (synced) return
 
         synced = true
         detached = false
+        previousPathId = pathId
 
         onSync(pathId)
     }
@@ -29,7 +50,6 @@ abstract class FireSync {
 
     protected abstract fun onSync(pathId: String)
     protected abstract fun onDetach()
-    open protected fun onDataChanged(document: DocumentSnapshot) {}
-    open protected fun onDataChanged(query: QuerySnapshot) {}
-
+    open fun onDataChanged(document: DocumentSnapshot) {}
+    open fun onDataChanged(query: QuerySnapshot) {}
 }

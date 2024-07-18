@@ -1,8 +1,8 @@
-package com.naulian.firex
+package com.example.firex
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.naulian.firex.databinding.ActivityMainBinding
+import com.example.firex.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
