@@ -1,8 +1,10 @@
+import com.vanniktech.maven.publish.SonatypeHost
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
-    `maven-publish`
+    id("com.vanniktech.maven.publish")
 }
 
 android {
@@ -53,15 +55,42 @@ dependencies {
     implementation(libs.anhance)
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
-                groupId = "com.naulian"
-                artifactId = "firex"
-                version = "1.3.0"
-                from(components["release"])
+
+mavenPublishing {
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
+
+    signAllPublications()
+
+    coordinates(
+        groupId = "com.naulian",
+        artifactId = "firex",
+        version = "1.3.0"
+    )
+    //./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
+
+    pom {
+        name.set("Firex")
+        description.set("Easily implement firebase in your android app")
+        inceptionYear.set("2023")
+        url.set("https://github.com/cinkhangin/firex/")
+        licenses {
+            license {
+                name.set("The Apache License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
             }
+        }
+        developers {
+            developer {
+                id.set("naulian")
+                name.set("Naulian")
+                url.set("https://github.com/cinkhangin/")
+            }
+        }
+        scm {
+            url.set("https://github.com/cinkhangin/firex/")
+            connection.set("scm:git:git://github.com/cinkhangin/firex.git")
+            developerConnection.set("scm:git:ssh://git@github.com/cinkhangin/firex.git")
         }
     }
 }

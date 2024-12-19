@@ -53,7 +53,7 @@ class ExampleUnitTest {
 
     @Test
     fun smartSyncTest() {
-        TestManager.sync("test")
+        TestManager.smartSync("test")
         TestManager.smartSync("test2")
 
         val expected = "Syncing test2"

@@ -20,7 +20,7 @@ object Storage {
         context: Context, uid: String, uri: Uri,
         onComplete: (Result<String>) -> Unit
     ) {
-        val ref = usersRef(uid).createPath(context, "profile", uri)
+        val ref = usersRef(uid).createImagePath(context, "profile", uri)
         uploadImage(ref, uri, onComplete)
     }
 
@@ -34,7 +34,7 @@ object Storage {
     }
 
     @Suppress("MemberVisibilityCanBePrivate")
-    fun StorageReference.createPath(
+    fun StorageReference.createImagePath(
         context: Context, name: String, uri: Uri
     ): StorageReference {
         val extension = uri.fileExtension(context)
