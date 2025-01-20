@@ -8,6 +8,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import com.naulian.anhance.fileExtension
+import kotlinx.coroutines.tasks.await
 
 fun storagePath(name: String) = Firebase.storage.getReference(name)
 
@@ -49,6 +50,16 @@ object Storage {
     ) = storageRef.putFile(imageUri).addOnSuccessListener {
         getDownloadUrl(storageRef, onComplete)
     }.addOnFailureListener { onComplete(Result.failure(it)) }
+
+    suspend fun uploadImage(storageRef: StorageReference, imageUri: Uri): Result<String> {
+        val upload = storageRef.putFile(imageUri).await()
+        if (upload.task.isSuccessful) {
+            val uri: Uri = storageRef.downloadUrl.await()
+            return Result.success(uri.toString())
+        } else {
+            return Result.failure(upload.task.exception!!)
+        }
+    }
 
     private fun getDownloadUrl(
         storageRef: StorageReference,

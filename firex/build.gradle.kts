@@ -9,7 +9,7 @@ plugins {
 
 android {
     namespace = "com.naulian.firex"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 26
@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.firebase.database.ktx)
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.firebase.storage.ktx)
+    implementation(libs.firebase.config.ktx)
 
     // Anhance
     implementation(libs.anhance)
@@ -64,7 +65,7 @@ mavenPublishing {
     coordinates(
         groupId = "com.naulian",
         artifactId = "firex",
-        version = "1.3.0"
+        version = "1.4.0-alpha01"
     )
     //./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
 
