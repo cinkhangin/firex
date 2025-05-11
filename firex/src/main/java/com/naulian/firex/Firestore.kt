@@ -15,7 +15,7 @@ val firebaseStore get() = Firebase.firestore
 fun storeCollection(path: String) = Firebase.firestore.collection(path)
 
 //nullable
-val Timestamp?.millis get() = (this?.seconds ?: 0L) * 1000L
+val Timestamp?.millis get() = this?.toDate()?.time ?: 0L
 val Timestamp?.dateString get() = this?.toDate().toString()
 
 fun Timestamp?.formatWith(pattern: String) = millis.formatWith(pattern)

@@ -9,6 +9,7 @@ import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 
 
+//We use class instead of object because remoteConfig has a context
 class FireConfig {
     private val remoteConfig = Firebase.remoteConfig
 

@@ -1,17 +1,33 @@
 [versions]
-anhance = "2024.3.0"
+activityCompose = "1.10.1"
+anhance = "2025.4.0"
 appcompat = "1.7.0"
-constraintlayout = "2.2.0"
-coreKtx = "1.15.0"
+constraintlayout = "2.2.1"
+coreKtx = "1.16.0"
 espressoCore = "3.6.1"
-firebaseBom = "33.7.0"
+composeBom = "2025.05.00"
+firebaseBom = "33.13.0"
 googleServices = "4.4.2"
+navigationCompose = "2.9.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 material = "1.12.0"
 playServicesAuth = "21.3.0"
+kotlin = "2.1.0"
 
 [libraries]
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+androidx-constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayout" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
+androidx-compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
+androidx-compose-ui = { module = "androidx.compose.ui:ui" }
+androidx-compose-ui-graphic = { module = "androidx.compose.ui:ui-graphics" }
+androidx-compose-ui-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
@@ -30,4 +46,5 @@ material = { module = "com.google.android.material:material", version.ref = "mat
 play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuth" }
 
 [plugins]
+compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
