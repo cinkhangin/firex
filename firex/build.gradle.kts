@@ -1,10 +1,9 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("com.vanniktech.maven.publish")
-
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.vanniktech.maven)
     alias(libs.plugins.google.services)
 }
 
@@ -52,12 +51,12 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     // Firebase
-    api(platform(libs.firebase.bom))
-    api(libs.firebase.auth.ktx)
-    api(libs.firebase.database.ktx)
-    api(libs.firebase.firestore.ktx)
-    api(libs.firebase.storage.ktx)
-    api(libs.firebase.config.ktx)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.database.ktx)
+    implementation(libs.firebase.firestore.ktx)
+    implementation(libs.firebase.storage.ktx)
+    implementation(libs.firebase.config.ktx)
 
     // Anhance
     implementation(libs.anhance)
@@ -72,7 +71,7 @@ mavenPublishing {
     coordinates(
         groupId = "com.naulian",
         artifactId = "firex",
-        version = "2025.08.00"
+        version = "2025.08.01"
     )
     //./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
 
