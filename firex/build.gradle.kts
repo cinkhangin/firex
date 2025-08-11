@@ -71,7 +71,7 @@ mavenPublishing {
     coordinates(
         groupId = "com.naulian",
         artifactId = "firex",
-        version = "2025.08.01"
+        version = "2025.08.02"
     )
     //./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
 

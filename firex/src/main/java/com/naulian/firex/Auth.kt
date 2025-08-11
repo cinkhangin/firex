@@ -9,9 +9,19 @@ import com.naulian.anhance.success
 
 val firebaseAuth get() = Firebase.auth
 val firebaseUser get() = firebaseAuth.currentUser
-val nonNullUser get() = firebaseUser!!
 val nullableUid get() = firebaseUser?.uid
-val nonNullUid get() = firebaseUser?.uid!!
+
+//2025.08.02
+@Deprecated(
+    "Use firebaseUid instead",
+    ReplaceWith("firebaseUid"),
+    DeprecationLevel.WARNING
+)
+val nonNullUid get() = firebaseUid
+val firebaseUid get() = firebaseUser?.uid.orEmpty()
+
+val isLoggedIn get() = firebaseUser != null
+val isLoggedOut get() = firebaseUser == null
 
 fun reloadAuth() = firebaseUser?.reload()
 fun signOut() = firebaseAuth.signOut()
