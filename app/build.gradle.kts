@@ -1,17 +1,20 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     alias(libs.plugins.compose)
+    alias(libs.plugins.google.services)
 }
 
 android {
     namespace = "com.example.firex"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.firex"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -36,9 +39,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
-    }
     buildFeatures {
         compose = true
     }
@@ -50,12 +50,17 @@ android {
     }
 }
 
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
+    }
+}
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.constraintlayout)
 
     //compose
     implementation(platform(libs.androidx.compose.bom))
@@ -85,7 +90,5 @@ dependencies {
     debugImplementation(libs.androidx.compose.test.manifest)
 
     implementation(libs.anhance)
-
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(project(":firex"))
 }

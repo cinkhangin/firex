@@ -1,12 +1,14 @@
+@file:Suppress("unused")
+
 package com.naulian.firex
 
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.Firebase
 import com.google.firebase.remoteconfig.ConfigUpdate
 import com.google.firebase.remoteconfig.ConfigUpdateListener
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigException
-import com.google.firebase.remoteconfig.ktx.remoteConfig
-import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
+import com.google.firebase.remoteconfig.remoteConfig
+import com.google.firebase.remoteconfig.remoteConfigSettings
 
 
 //We use class instead of object because remoteConfig has a context

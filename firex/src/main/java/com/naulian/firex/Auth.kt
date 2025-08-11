@@ -2,8 +2,8 @@
 
 package com.naulian.firex
 
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 import com.naulian.anhance.failure
 import com.naulian.anhance.success
 

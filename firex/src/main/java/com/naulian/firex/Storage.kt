@@ -4,9 +4,9 @@ package com.naulian.firex
 
 import android.content.Context
 import android.net.Uri
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.Firebase
 import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.ktx.storage
+import com.google.firebase.storage.storage
 import com.naulian.anhance.fileExtension
 import kotlinx.coroutines.tasks.await
 

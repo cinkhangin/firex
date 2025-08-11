@@ -1,15 +1,16 @@
-import com.vanniktech.maven.publish.SonatypeHost
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("com.google.gms.google-services")
     id("com.vanniktech.maven.publish")
+
+    alias(libs.plugins.google.services)
 }
 
 android {
     namespace = "com.naulian.firex"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 26
@@ -21,7 +22,10 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 
@@ -29,8 +33,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "17"
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
     }
 }
 
@@ -45,12 +52,12 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     // Firebase
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.auth.ktx)
-    implementation(libs.firebase.database.ktx)
-    implementation(libs.firebase.firestore.ktx)
-    implementation(libs.firebase.storage.ktx)
-    implementation(libs.firebase.config.ktx)
+    api(platform(libs.firebase.bom))
+    api(libs.firebase.auth.ktx)
+    api(libs.firebase.database.ktx)
+    api(libs.firebase.firestore.ktx)
+    api(libs.firebase.storage.ktx)
+    api(libs.firebase.config.ktx)
 
     // Anhance
     implementation(libs.anhance)
@@ -58,14 +65,14 @@ dependencies {
 
 
 mavenPublishing {
-    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
+    publishToMavenCentral(automaticRelease = true)
 
     signAllPublications()
 
     coordinates(
         groupId = "com.naulian",
         artifactId = "firex",
-        version = "1.4.0-rc"
+        version = "2025.08.00"
     )
     //./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
 
