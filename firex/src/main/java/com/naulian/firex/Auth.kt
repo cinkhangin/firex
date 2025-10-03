@@ -34,22 +34,18 @@ fun signUpWithEmailAndPassword(
     onComplete: (result: Result<String>) -> Unit
 ) = firebaseAuth.createUserWithEmailAndPassword(email, password)
     .addOnFailureListener { onComplete(failure(it)) }
-    .addOnSuccessListener { onComplete(success(nonNullUid)) }
+    .addOnSuccessListener { onComplete(success(firebaseUid)) }
 
 fun signInWithEmailAndPassword(
     email: String, password: String,
     onComplete: (result: Result<String>) -> Unit
 ) = firebaseAuth.signInWithEmailAndPassword(email, password)
     .addOnFailureListener { onComplete(failure(it)) }
-    .addOnSuccessListener { onComplete(success(nonNullUid)) }
+    .addOnSuccessListener { onComplete(success(firebaseUid)) }
 
 fun signInAnonymously(
     onComplete: (result: Result<String>) -> Unit
 ) = firebaseAuth.signInAnonymously()
     .addOnFailureListener { onComplete(failure(it)) }
-    .addOnSuccessListener { onComplete(success(nonNullUid)) }
-
-fun signUpWithGoogle() {
-
-}
+    .addOnSuccessListener { onComplete(success(firebaseUid)) }
 
