@@ -3,13 +3,13 @@
 package com.naulian.firex
 
 import android.util.Log
+import com.ckgin.anhance.formatWith
 import com.google.firebase.Firebase
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.firestore
-import com.naulian.anhance.formatWith
 
 val firebaseStore get() = Firebase.firestore
 fun storeCollection(path: String) = Firebase.firestore.collection(path)

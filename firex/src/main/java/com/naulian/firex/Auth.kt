@@ -4,8 +4,8 @@ package com.naulian.firex
 
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
-import com.naulian.anhance.failure
-import com.naulian.anhance.success
+import kotlin.Result.Companion.failure
+import kotlin.Result.Companion.success
 
 val firebaseAuth get() = Firebase.auth
 val firebaseUser get() = firebaseAuth.currentUser

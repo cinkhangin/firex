@@ -1,15 +1,12 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.vanniktech.maven)
     alias(libs.plugins.google.services)
 }
 
 android {
     namespace = "com.naulian.firex"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         minSdk = 26
@@ -34,12 +31,6 @@ android {
     }
 }
 
-kotlin {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_17)
-    }
-}
-
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -59,7 +50,7 @@ dependencies {
     implementation(libs.firebase.config.ktx)
 
     // Anhance
-    implementation(libs.anhance)
+    implementation(libs.ckgin.anhance)
 }
 
 
@@ -69,9 +60,9 @@ mavenPublishing {
     signAllPublications()
 
     coordinates(
-        groupId = "com.naulian",
+        groupId = "com.ckgin",
         artifactId = "firex",
-        version = "2025.12.00"
+        version = "2026.08.00"
     )
     //./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
 
@@ -89,8 +80,8 @@ mavenPublishing {
         }
         developers {
             developer {
-                id.set("naulian")
-                name.set("Naulian")
+                id.set("ckgin")
+                name.set("Cin khan Gin")
                 url.set("https://github.com/cinkhangin/")
             }
         }

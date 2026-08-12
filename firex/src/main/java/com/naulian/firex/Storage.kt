@@ -4,10 +4,10 @@ package com.naulian.firex
 
 import android.content.Context
 import android.net.Uri
+import com.ckgin.anhance.fileExtension
 import com.google.firebase.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.storage
-import com.naulian.anhance.fileExtension
 import kotlinx.coroutines.tasks.await
 
 fun storagePath(name: String) = Firebase.storage.getReference(name)
